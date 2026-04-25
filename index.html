@@ -60,7 +60,7 @@
 
   <!-- প্রশ্ন ১ -->
   <div class="mcq-card">
-    <p><strong>১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</strong></p>
+    <p><strong>১. উদ্দীপকের H<sub>2</sub> গ্যাসের মোল ভগ্নাংশ কত হবে?</strong></p>
     <div class="options">
       <div>ক) 1/2</div>
       <div>খ) 8/9</div>
@@ -100,11 +100,8 @@ function showQuestion() {
     const collegeName = document.getElementById('college').options[document.getElementById('college').selectedIndex].text;
     document.getElementById('q-header').innerText = collegeName + " - " + subject;
     
-    // প্রশ্ন এরিয়া দেখানো
-    document.getElementById('question-area').style.display = 'block';
-    
-    // স্মুথ স্ক্রল
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+  // প্রশ্ন এরিয়া দেখানোর বদলে নতুন পেজে নিয়ে যাবে
+window.location.href = "chem-pre-test-mcq.html";
   } else {
     alert("দয়া করে সবগুলো অপশন সিলেক্ট করো!");
   }
