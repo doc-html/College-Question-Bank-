@@ -3,24 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Fonts থেকে সুন্দর বাংলা ফন্ট -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- MathJax Configuration -->
-<script>
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    options: {
-      renderActions: {
-        addMenu: [],
-        checkReady: [10, function (doc) {
-          document.body.style.visibility = 'visible';
-        }, '']
-      }
-    }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsivlr.net/npm/mathjax@3/MathJax.js"></script>
+<!-- MathJax সঠিক লিঙ্ক -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js"></script>
 
 <style>
   body { 
@@ -28,7 +16,7 @@
     background-color: #f0f4f8; 
     margin: 0; 
     padding: 20px; 
-    visibility: hidden; /* MathJax লোড না হওয়া পর্যন্ত পেজ লুকিয়ে রাখবে */
+    /* visibility: hidden; সরিয়ে দেওয়া হলো যাতে পেজ সাদা না থাকে */
   }
   .container { max-width: 850px; margin: auto; }
   
@@ -74,17 +62,15 @@
     font-family: 'Hind Siliguri', sans-serif;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    outline: none;
   }
 
   .solve-btn:hover { 
     transform: translateY(-2px); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    background: #0d8d6d;
   }
 
   .solve-btn.active {
-    background: #ff7675; /* সলিউশন ওপেন থাকলে লালচে রঙ হবে */
+    background: #ff7675; 
   }
 
   .solve-content { 
@@ -109,7 +95,6 @@
     <p style="color: #636e72;">Chemistry Solution Room | Exam Preparatory 2026</p>
   </div>
 
-  <!-- প্রশ্ন ০১ -->
   <div class="mcq-card">
     <div class="question-text">১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</div>
     <div class="options">
@@ -119,7 +104,6 @@
       <div>ঘ) \( \frac{16}{17} \)</div>
     </div>
     
-    <!-- বাটন আপডেট: this এবং নতুন টেক্সট -->
     <button class="solve-btn" onclick="toggleSolve('s1', this)">Show Solution</button>
     
     <div id="s1" class="solve-content">
@@ -130,21 +114,19 @@
       <span class="correct-ans">সঠিক উত্তর: খ</span>
     </div>
   </div>
-
 </div>
 
 <script>
   function toggleSolve(id, btn) {
     const content = document.getElementById(id);
-    
     if (content.style.display === "block") {
       content.style.display = "none";
-      btn.innerText = "Show Solution"; // বাটন টেক্সট পরিবর্তন
-      btn.classList.remove("active");  // রঙ পরিবর্তন
+      btn.innerText = "Show Solution";
+      btn.classList.remove("active");
     } else {
       content.style.display = "block";
-      btn.innerText = "Hide Solution"; // বাটন টেক্সট পরিবর্তন
-      btn.classList.add("active");     // রঙ পরিবর্তন
+      btn.innerText = "Hide Solution";
+      btn.classList.add("active");
     }
   }
 </script>
