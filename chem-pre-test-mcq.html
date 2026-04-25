@@ -3,117 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
-
-<!-- MathJax সঠিক লিঙ্ক -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
-  body { 
-    font-family: 'Hind Siliguri', sans-serif; 
-    background-color: #f0f4f8; 
-    margin: 0; 
-    padding: 20px; 
-    /* visibility: hidden; সরিয়ে দেওয়া হলো যাতে পেজ সাদা না থাকে */
-  }
-  .container { max-width: 850px; margin: auto; }
+  body { font-family: 'Hind Siliguri', sans-serif; background-color: #f4f7f9; margin: 0; padding: 20px; }
+  .container { max-width: 900px; margin: auto; }
   
-  .header { 
-    text-align: center; 
-    background: #ffffff; 
-    padding: 25px; 
-    border-radius: 20px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
-    margin-bottom: 30px; 
-    border-bottom: 5px solid #007bff;
-  }
+  .header { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 6px solid #007bff; }
+  .header h2 { color: #1a2a6c; margin: 0; font-size: 32px; }
   
-  .header h2 { color: #1a2a6c; margin: 0; font-size: 28px; }
+  /* উদ্দীপক বক্স */
+  .uddipok-box { background: #eef2f7; border: 2px solid #ccd6e0; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center; }
+  .diagram-flex { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 15px 0; }
+  .box-item { border: 2px solid #333; padding: 10px; min-width: 100px; background: white; }
 
-  .mcq-card { 
-    background: #fff; 
-    padding: 25px; 
-    border-radius: 18px; 
-    margin-bottom: 25px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    border: 1px solid #e1e8ed;
-  }
+  /* MCQ কার্ড স্টাইল */
+  .mcq-card { background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+  .ans-tag { display: inline-block; background: #e3f2fd; color: #007bff; padding: 5px 15px; border-radius: 8px; font-weight: bold; margin-bottom: 12px; font-size: 14px; }
+  .question-text { font-size: 19px; font-weight: 700; color: #333; margin-bottom: 15px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
 
-  .question-text { font-size: 20px; font-weight: 700; color: #2d3436; margin-bottom: 15px; }
-
-  .options { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 15px; 
-    margin: 20px 0; 
-    font-size: 18px;
-  }
-
-  .solve-btn { 
-    background: #10ac84; 
-    color: white; 
-    border: none; 
-    padding: 10px 25px; 
-    border-radius: 30px; 
-    cursor: pointer; 
-    font-weight: 600;
-    font-family: 'Hind Siliguri', sans-serif;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  .solve-btn:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  .solve-btn.active {
-    background: #ff7675; 
-  }
-
-  .solve-content { 
-    display: none; 
-    background: #f1f9f6; 
-    border-left: 5px solid #10ac84; 
-    padding: 20px; 
-    border-radius: 12px; 
-    margin-top: 20px; 
-    font-size: 17px;
-    line-height: 1.8;
-  }
-
-  .correct-ans { color: #0984e3; font-weight: 700; margin-top: 10px; display: block; }
+  /* সলভ বাটন ও কন্টেন্ট (ডট বর্ডারসহ) */
+  .solve-btn { background: #10ac84; color: white; border: none; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: 600; font-family: 'Hind Siliguri'; transition: 0.3s; }
+  .solve-btn:hover { transform: scale(1.05); background: #0d8d6d; }
+  .solve-btn.active { background: #ff7675; }
+  
+  .solve-content { display: none; background: #f9fffb; border: 2px dashed #10ac84; padding: 20px; border-radius: 12px; margin-top: 15px; line-height: 1.8; }
+  
+  /* সৃজনশীল সেকশন */
+  .cq-section { border-left: 8px solid #6c5ce7; padding-left: 20px; margin-top: 50px; }
+  .cq-title { background: #6c5ce7; color: white; display: inline-block; padding: 5px 20px; border-radius: 5px; margin-bottom: 20px; }
 </style>
 </head>
 <body>
 
 <div class="container">
   <div class="header">
-    <h2>Syed Nazrul Islam College</h2>
-    <p style="color: #636e72;">Chemistry Solution Room | Exam Preparatory 2026</p>
+    <h2>সম্পূরক প্রস্তুতি কার্যক্রম ২০২৬</h2>
+    <p>বিষয়: রসায়ন (লেকচার ৪ ও ৬) | সৈয়দ নজরুল ইসলাম কলেজ</p>
   </div>
 
-  <div class="mcq-card">
-    <div class="question-text">১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</div>
-    <div class="options">
-      <div>ক) \( \frac{1}{2} \)</div>
-      <div>খ) \( \frac{8}{9} \)</div>
-      <div>গ) \( \frac{1}{9} \)</div>
-      <div>ঘ) \( \frac{16}{17} \)</div>
+  <!-- উদ্দীপক ১ -->
+  <div class="uddipok-box">
+    <div class="diagram-flex">
+      <div class="box-item">\(w \text{ gm } H_2\)</div>
+      <span>&longleftrightarrow</span>
+      <div class="box-item">\(w \text{ gm } CH_4\)</div>
     </div>
-    
+    <strong>তাপমাত্রা: \(25^\circ C\)</strong>
+  </div>
+
+  <!-- প্রশ্ন ০১ -->
+  <div class="mcq-card">
+    <div class="ans-tag">প্রশ্ন - ০১</div>
+    <div class="question-text">১. উদ্দীপকের \(H_2\) গ্যাসের মোল ভগ্নাংশ কত হবে?</div>
+    <div class="options">
+      <div>ক) \( \frac{1}{2} \)</div><div>খ) \( \frac{1}{9} \)</div>
+      <div>গ) \( \frac{8}{9} \)</div><div>ঘ) \( \frac{16}{17} \)</div>
+    </div>
     <button class="solve-btn" onclick="toggleSolve('s1', this)">Show Solution</button>
-    
     <div id="s1" class="solve-content">
-      <strong>ব্যাখ্যা:</strong><br>
-      দেওয়া আছে, ভর = $w$<br>
-      মোল সংখ্যা, \( n_{H_2} = \frac{w}{2} \) এবং \( n_{CH_4} = \frac{w}{16} \)<br>
-      মোল ভগ্নাংশ \( X_{H_2} = \frac{\frac{w}{2}}{\frac{w}{2} + \frac{w}{16}} = \frac{8}{9} \)<br>
-      <span class="correct-ans">সঠিক উত্তর: খ</span>
+      <strong>ব্যাখ্যা:</strong> মোল সংখ্যা \( n_{H_2} = w/2 \), \( n_{CH_4} = w/16 \)।<br>
+      মোল ভগ্নাংশ \( X_{H_2} = \frac{w/2}{w/2 + w/16} = \frac{8}{9} \)। <br>
+      <strong style="color:#007bff;">সঠিক উত্তর: গ</strong>
     </div>
   </div>
+
+  <!-- প্রশ্ন ০২ -->
+  <div class="mcq-card">
+    <div class="ans-tag">প্রশ্ন - ০২</div>
+    <div class="question-text">২. দুটি গ্যাসের গড় গতিশক্তি কখন সমান হবে?</div>
+    <div class="options">
+      <div>ক) চাপ সমান হলে</div><div>খ) আণবিক ভর সমান হলে</div>
+      <div>গ) তাপমাত্রা সমান হলে</div><div>ঘ) আয়তন সমান হলে</div>
+    </div>
+    <button class="solve-btn" onclick="toggleSolve('s2', this)">Show Solution</button>
+    <div id="s2" class="solve-content">
+      গড় গতিশক্তি \( E_k = \frac{3}{2}RT \) শুধুমাত্র তাপমাত্রার ওপর নির্ভর করে।<br>
+      <strong style="color:#007bff;">সঠিক উত্তর: গ</strong>
+    </div>
+  </div>
+
+  <!-- সৃজনশীল সেকশন -->
+  <div class="cq-section">
+    <div class="cq-title">সৃজনশীল অংশ</div>
+    
+    <div class="mcq-card">
+      <div class="uddipok-box">
+        <p>পাত্র-১: বিশুদ্ধ \(O_2\) (ব্যপিত সময় ৭৫ সে.)</p>
+        <p>পাত্র-২: ৩০% X মিশ্রিত \(O_2\) (ব্যপিত সময় ৯০ সে.)</p>
+      </div>
+      <div class="question-text">সৃজনশীল প্রশ্ন - ১</div>
+      <p>ক) COD কী?</p>
+      <p>খ) অনুবন্ধী এসিড ও ক্ষারের সংজ্ঞা দাও।</p>
+      <p>গ) X গ্যাসের আণবিক ভর নির্ণয় কর।</p>
+      <button class="solve-btn" onclick="toggleSolve('cq1', this)">Show Hint</button>
+      <div id="cq1" class="solve-content">
+        গ্রাহাম এর ব্যাপন সূত্র: \( \frac{r_1}{r_2} = \sqrt{\frac{M_2}{M_1}} \) ব্যবহার করে মিশ্রণের ভর বের করতে হবে।
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -121,11 +113,11 @@
     const content = document.getElementById(id);
     if (content.style.display === "block") {
       content.style.display = "none";
-      btn.innerText = "Show Solution";
+      btn.innerText = (id.startsWith('cq')) ? "Show Hint" : "Show Solution";
       btn.classList.remove("active");
     } else {
       content.style.display = "block";
-      btn.innerText = "Hide Solution";
+      btn.innerText = (id.startsWith('cq')) ? "Hide Hint" : "Hide Solution";
       btn.classList.add("active");
     }
   }
