@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<!-- MathJax লাইব্রেরি যুক্ত করা (গাণিতিক সমীকরণের জন্য) -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js"></script>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; line-height: 1.6; }
+  .solution-container { max-width: 800px; margin: auto; }
+  .exam-header { text-align: center; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 5px solid #28a745; }
+  .exam-header h1 { color: #2c3e50; font-size: 24px; margin: 0; }
+  .uddipok-box { background: #e9f5ff; border: 2px solid #bce0ff; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-weight: bold; }
+  .mcq-card { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; border-left: 6px solid #3498db; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+  .footer-row { margin-top: 20px; display: flex; align-items: center; border-top: 1px solid #eee; padding-top: 15px; }
+  .ans-circle { width: 35px; height: 35px; border-radius: 50%; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; }
+  .solve-section { background: #dff0d8; color: #3c763d; border-radius: 10px; padding: 15px; border: 1px solid #d6e9c6; margin-top: 20px; }
+  .solve-section h4 { margin: 0 0 10px 0; }
+  .math-center { text-align: center; margin: 15px 0; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="solution-container">
+  <div class="exam-header">
+    <h1>Ananda Mohan College - Chemistry</h1>
+    <p>Lectures: 4 & 6 | Exam: Pre-Test 2026 | Full Solution Area</p>
+  </div>
+
+  <!-- উদ্দীপক সেকশন -->
+  <div class="uddipok-box">
+    উদ্দীপকটি লক্ষ্য করো এবং ১ নং প্রশ্নের উত্তর দাও:<br>
+    <div class="math-center">
+      \(w \text{ gm } H_2\) (পাত্র ১) \(\quad\) vs \(\quad\) \(w \text{ gm } CH_4\) (পাত্র ২) <br>
+      তাপমাত্রা: \(25^\circ C\)
+    </div>
+  </div>
+
+  <!-- প্রশ্ন ১ -->
+  <div class="mcq-card">
+    <p><strong>১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</strong></p>
+    <div class="options">
+      <div>ক) \( \frac{1}{2} \)</div>
+      <div>খ) \( \frac{8}{9} \)</div>
+      <div>গ) \( \frac{1}{9} \)</div>
+      <div>ঘ) \( \frac{16}{17} \)</div>
+    </div>
+    <div class="footer-row">
+      <div class="ans-circle">খ</div>
+    </div>
+    <!-- সলিউশন এরিয়া -->
+    <div class="solve-section">
+      <h4>SOLVE</h4>
+      <p>আমরা জানি, মোল সংখ্যা, \( n = \frac{w}{M} \)</p>
+      <p>\( H_2 \) এর মোল সংখ্যা, \( n_{H_2} = \frac{w}{2} \)</p>
+      <p>\( CH_4 \) এর মোল সংখ্যা, \( n_{CH_4} = \frac{w}{16} \)</p>
+      <p>মোট মোল সংখ্যা, \( n_{\text{total}} = \frac{w}{2} + \frac{w}{16} = \frac{8w+w}{16} = \frac{9w}{16} \)</p>
+      <p>মোল ভগ্নাংশ, \( X_{H_2} = \frac{n_{H_2}}{n_{\text{total}}} = \frac{w/2}{9w/16} = \frac{w}{2} \times \frac{16}{9w} = \frac{8}{9} \)</p>
+      <p><strong>সঠিক উত্তর: খ</strong></p>
+    </div>
+  </div>
+
+  <!-- প্রশ্ন ৫ -->
+  <div class="mcq-card">
+    <p><strong>৫. C.F.C-113 নিচের কোনটি?</strong></p>
+    <div class="options">
+      <div>ক) \(CF_2Cl.CFCl_2\)</div>
+      <div>খ) \(CF_2Cl_2\)</div>
+      <div>গ) \(CFCl_3\)</div>
+      <div>ঘ) \(CHF_2Cl\)</div>
+    </div>
+    <div class="footer-row">
+      <div class="ans-circle">ক</div>
+    </div>
+    <div class="solve-section">
+      <h4>SOLVE</h4>
+      <p><strong>C.F.C-abc</strong> এর নামকরণের নিয়ম:</p>
+      <ul>
+        <li>প্রথম সংখ্যা (\(a\)) = কার্বন সংখ্যা - 1</li>
+        <li>দ্বিতীয় সংখ্যা (\(b\)) = হাইড্রোজেন সংখ্যা + 1</li>
+        <li>তৃতীয় সংখ্যা (\(c\)) = ফ্লোরিন সংখ্যা</li>
+      </ul>
+      <p>\(CF_2Cl.CFCl_2\) যোগে:<br>
+        কার্বন সংখ্যা = ২ (তাই \(a = 2-1 = 1\))<br>
+        হাইড্রোজেন সংখ্যা = ০ (তাই \(b = 0+1 = 1\))<br>
+        ফ্লোরিন সংখ্যা = ৩ (তাই \(c = 3\))<br>
+        নাম হবে C.F.C-113।</p>
+      <p><strong>সঠিক উত্তর: ক</strong></p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
