@@ -9,98 +9,120 @@
 <style>
   :root { --primary-blue: #e3f2fd; --text-blue: #007bff; --solve-green: #10ac84; --hint-purple: #6c5ce7; }
   body { font-family: 'Hind Siliguri', sans-serif; background-color: #f4f7f9; margin: 0; padding: 10px; }
-  .container { max-width: 700px; margin: auto; }
+  .container { max-width: 800px; margin: auto; }
   
-  /* Header */
   .header { text-align: center; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 5px solid var(--text-blue); }
   .header h2 { color: #1a2a6c; margin: 0; font-size: 24px; }
 
-  /* Realistic MCQ & CQ Cards */
   .mcq-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
   .ans-tag { display: inline-block; background: var(--primary-blue); color: var(--text-blue); padding: 3px 12px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 13px; }
-  .question-text { font-size: 17px; font-weight: 700; color: #333; margin-bottom: 12px; }
+  .question-text { font-size: 17px; font-weight: 700; color: #333; margin-bottom: 12px; line-height: 1.6; }
   .options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
 
-  /* রিয়েলিস্টিক উদ্দীপক ডিজাইন (প্রশ্নপত্রের মতো) */
-  .sketch-diagram { border: 1px solid #000; padding: 15px; margin: 15px 0; background: #fff; position: relative; text-align: center; }
-  .sketch-box { border: 1.5px solid #000; display: inline-block; padding: 10px; min-width: 70px; margin: 0 15px; font-size: 14px; background: #fff; }
-  .sketch-line { position: relative; height: 1.5px; background: #000; width: 60px; display: inline-block; vertical-align: middle; }
-  .sketch-line::after { content: '→'; position: absolute; right: -5px; top: -11px; font-size: 18px; }
-  .sketch-line.left::before { content: '←'; position: absolute; left: -5px; top: -11px; font-size: 18px; }
-
-  /* Buttons */
+  /* রিয়েলিস্টিক উদ্দীপক */
+  .sketch-diagram { border: 1px solid #000; padding: 15px; margin: 15px 0; background: #fff; text-align: center; overflow-x: auto; }
+  .sketch-box { border: 1.5px solid #000; display: inline-block; padding: 10px; min-width: 80px; margin: 10px; font-size: 13px; vertical-align: middle; }
+  
   .solve-btn { background: var(--solve-green); color: white; border: none; padding: 6px 20px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 600; font-family: 'Hind Siliguri'; }
-  .hint-btn { background: var(--hint-purple); color: white; border: none; padding: 4px 12px; border-radius: 15px; cursor: pointer; font-size: 12px; margin-left: 10px; }
+  .hint-btn { background: var(--hint-purple); color: white; border: none; padding: 4px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; }
 
-  /* Solution Content */
-  .solve-content { display: none; background: #f9fffb; border: 1.5px dashed var(--solve-green); padding: 15px; border-radius: 10px; margin-top: 10px; font-size: 15px; }
-
-  /* CQ Layout */
-  .cq-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 5px 0; border-bottom: 1px inset #eee; }
-  .cq-text { flex: 1; font-weight: 500; }
+  .solve-content { display: none; background: #f9fffb; border: 1.5px dashed var(--solve-green); padding: 15px; border-radius: 10px; margin-top: 10px; font-size: 14px; line-height: 1.7; }
+  .cq-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; padding: 5px 0; border-bottom: 1px solid #eee; }
+  .cq-text { flex: 1; padding-right: 10px; }
 </style>
 </head>
 <body>
 
 <div class="container">
   <div class="header">
-    <h2>রসায়ন প্রস্তুতি কার্যক্রম ২০২৬</h2>
-    <p>লেকচার: ৪ ও ৬ | কলেজ প্রশ্ন সংকলন</p>
+    <h2>সম্পূর্ণ রসায়ন প্রশ্নপত্র ২০২৬</h2>
+    <p>লেকচার ৪ ও ৬ | বোর্ড স্ট্যান্ডার্ড প্র্যাকটিস</p>
   </div>
 
-  <!-- প্রশ্ন ১ (MCQ) -->
+  <!-- MCQ 1 -->
   <div class="mcq-card">
     <div class="ans-tag">প্রশ্ন - ০১</div>
     <div class="sketch-diagram">
       <div class="sketch-box">\(w \text{ gm}\)<br>\(H_2\)</div>
-      <div class="sketch-line"></div>
-      <div style="display:inline-block; border:1px solid #000; padding:2px 5px; font-size:12px;">\(25^\circ C\)</div>
-      <div class="sketch-line"></div>
+      <span>\(\xleftarrow{25^\circ C}\)</span>
       <div class="sketch-box">\(w \text{ gm}\)<br>\(CH_4\)</div>
     </div>
-    <div class="question-text">১. উদ্দীপকের \(H_2\) গ্যাসের মোল ভগ্নাংশ কত হবে?</div>
+    <div class="question-text">১. উদ্দীপকের \(H_2\) গ্যাসের মোল ভগ্নাংশ কত?</div>
     <div class="options">
       <div>ক) \( \frac{1}{2} \)</div><div>খ) \( \frac{1}{9} \)</div>
       <div>গ) \( \frac{8}{9} \)</div><div>ঘ) \( \frac{16}{17} \)</div>
     </div>
     <button class="solve-btn" onclick="tg('s1', this, 'Solve')">Solve</button>
     <div id="s1" class="solve-content">
-      <strong>সমাধান:</strong> \( n_{H_2} = \frac{w}{2} \), \( n_{CH_4} = \frac{w}{16} \)<br>
-      মোল ভগ্নাংশ \( X_{H_2} = \frac{w/2}{w/2 + w/16} = \frac{8}{9} \)<br>
-      <strong style="color:var(--text-blue);">সঠিক উত্তর: গ</strong>
+      \( n_{H_2} = w/2 \), \( n_{CH_4} = w/16 \)<br>
+      \( X_{H_2} = \frac{w/2}{w/2 + w/16} = \frac{8}{9} \) <br>
+      <strong>উত্তর: গ</strong>
     </div>
   </div>
 
-  <!-- সৃজনশীল প্রশ্ন (CQ) -->
+  <!-- MCQ 2 -->
+  <div class="mcq-card">
+    <div class="ans-tag">প্রশ্ন - ০২</div>
+    <div class="question-text">২. দুটি গ্যাসের গড় গতিশক্তি কখন সমান হবে?</div>
+    <div class="options">
+      <div>ক) চাপ সমান</div><div>খ) আণবিক ভর সমান</div>
+      <div>গ) তাপমাত্রা সমান</div><div>ঘ) আয়তন সমান</div>
+    </div>
+    <button class="solve-btn" onclick="tg('s2', this, 'Solve')">Solve</button>
+    <div id="s2" class="solve-content">গড় গতিশক্তি \( E = \frac{3}{2}RT \)। এটি শুধুমাত্র পরম তাপমাত্রার সমানুপাতিক। <strong>উত্তর: গ</strong></div>
+  </div>
+
+  <!-- MCQ 5 -->
+  <div class="mcq-card">
+    <div class="ans-tag">প্রশ্ন - ০৫</div>
+    <div class="question-text">৫. C.F.C-113 নিচের কোনটি?</div>
+    <div class="options">
+      <div>ক) \( CF_2Cl.CFCl_2 \)</div><div>খ) \( CF_2Cl_2 \)</div>
+      <div>গ) \( CFCl_3 \)</div><div>ঘ) \( CHF_2Cl \)</div>
+    </div>
+    <button class="solve-btn" onclick="tg('s5', this, 'Solve')">Solve</button>
+    <div id="s5" class="solve-content">CFC-113 হলো \( C_2F_3Cl_3 \)। এর সংকেত \( CF_2Cl-CFCl_2 \)। <strong>উত্তর: ক</strong></div>
+  </div>
+
+  <!-- CQ 1 -->
   <div class="mcq-card">
     <div class="ans-tag">সৃজনশীল প্রশ্ন - ০১</div>
-    <!-- Realistic CQ Diagram -->
     <div class="sketch-diagram">
-      <div style="border: 1px solid #000; display: inline-block; padding: 2px 10px; margin-bottom: 10px;">\(25^\circ C\)</div><br>
+      <div style="border:1px solid #000; display:inline-block; padding:2px 10px;">\(25^\circ C\)</div><br>
       <div class="sketch-box">বিশুদ্ধ \(O_2\)<br>সময়: ৭৫ সে.</div>
-      <div class="sketch-line left" style="width:80px;"><span style="font-size:10px; position:absolute; top:-18px; left:15px;">\(100cm^3\)</span></div>
-      <div class="sketch-box">৩০% X মিশ্রিত<br>সময়: ৯০ সে.</div>
+      <span style="font-size:12px;">\(\leftarrow 100cm^3 \rightarrow\)</span>
+      <div class="sketch-box">৩০% X মিশ্রিত<br>\(O_2\) গ্যাস<br>সময়: ৯০ সে.</div>
+      <div class="sketch-box" style="background:#f0f0f0;">r.m.s বেগ =<br>\(666.44 \text{ ms}^{-1}\)<br>Y গ্যাস (\(27^\circ C\))</div>
     </div>
 
     <div class="cq-row">
       <div class="cq-text">ক) COD কী?</div>
-      <button class="hint-btn" onclick="tg('cq1a', this, 'Hint')">Hint</button>
+      <button class="hint-btn" onclick="tg('c1a', this, 'Hint')">Hint</button>
     </div>
-    <div id="cq1a" class="solve-content">Chemical Oxygen Demand. পানিতে উপস্থিত জৈব ও অজৈব দূষক জারিত করতে প্রয়োজনীয় অক্সিজেন।</div>
+    <div id="c1a" class="solve-content">Chemical Oxygen Demand. পানিতে উপস্থিত সকল দূষক জারিত করতে প্রয়োজনীয় অক্সিজেনের পরিমাণ।</div>
 
     <div class="cq-row">
       <div class="cq-text">খ) অনুবন্ধী এসিড ও ক্ষারের সংজ্ঞা দাও।</div>
-      <button class="hint-btn" onclick="tg('cq1b', this, 'Hint')">Hint</button>
+      <button class="hint-btn" onclick="tg('c1b', this, 'Hint')">Hint</button>
     </div>
-    <div id="cq1b" class="solve-content">একটি এসিড একটি প্রোটন ত্যাগের পর যে ক্ষারে পরিণত হয়, তাকে ওই এসিডের অনুবন্ধী ক্ষার বলে।</div>
+    <div id="c1b" class="solve-content">একটি এসিড প্রোটন ত্যাগের পর যে ক্ষারে পরিণত হয় তাকে ওই এসিডের অনুবন্ধী ক্ষার বলে।</div>
 
     <div class="cq-row">
       <div class="cq-text">গ) X গ্যাসের আণবিক ভর নির্ণয় কর।</div>
-      <button class="hint-btn" onclick="tg('cq1c', this, 'Hint')">Hint</button>
+      <button class="hint-btn" onclick="tg('c1c', this, 'Hint')">Hint</button>
     </div>
-    <div id="cq1c" class="solve-content">
-      সূত্র: \( \frac{t_2}{t_1} = \sqrt{\frac{M_{mix}}{M_{O_2}}} \)<br>
-      প্রথমে \( M_{mix} \) বের করো, তারপর \( M_{mix} = 0.3M_x + 0.7(32) \) থেকে \( M_x \) বের করো।
+    <div id="c1c" class="solve-content">
+      ১. \( \frac{t_2}{t_1} = \sqrt{\frac{M_{mix}}{M_{O_2}}} \Rightarrow \frac{90}{75} = \sqrt{\frac{M_{mix}}{32}} \Rightarrow M_{mix} = 46.08 \)<br>
+      ২. \( 46.08 = \frac{30 \times M_x + 70 \times 32}{100} \Rightarrow M_x = 78.93 \)
+    </div>
+
+    <div class="cq-row">
+      <div class="cq-text">ঘ) উদ্দীপকের গ্যাস তিনটির মধ্যে কোনটি সহজে তরল করা যাবে? গাণিতিক বিশ্লেষণ দাও।</div>
+      <button class="hint-btn" onclick="tg('c1d', this, 'Hint')">Hint</button>
+    </div>
+    <div id="c1d" class="solve-content">
+      ১. Y গ্যাসের আণবিক ভর বের করো: \( C = \sqrt{\frac{3RT}{M}} \Rightarrow 666.44 = \sqrt{\frac{3 \times 8.314 \times 300}{M}} \Rightarrow M_y \approx 16.8 (CH_4) \)<br>
+      ২. যে গ্যাসের আণবিক ভর ও ভ্যানডার ওয়ালস ধ্রুবক (a) বেশি, সেটি সহজে তরল হয়। এখানে আণবিক ভরের ক্রম: \( M_x > M_{O_2} > M_y \)। তাই X গ্যাস সবচেয়ে সহজে তরল হবে।
     </div>
   </div>
 
