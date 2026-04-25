@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Fonts থেকে সুন্দর বাংলা ফন্ট যুক্ত করা -->
+<!-- Google Fonts থেকে সুন্দর বাংলা ফন্ট -->
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- MathJax Configuration: লোড হওয়ার সময় টেক্সট লুকিয়ে রাখবে -->
+<!-- MathJax Configuration -->
 <script>
   window.MathJax = {
     tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
@@ -20,7 +20,7 @@
     }
   };
 </script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsivlr.net/npm/mathjax@3/MathJax.js"></script>
 
 <style>
   body { 
@@ -28,30 +28,10 @@
     background-color: #f0f4f8; 
     margin: 0; 
     padding: 20px; 
-    visibility: hidden; /* MathJax লোড না হওয়া পর্যন্ত পেজ লুকানো থাকবে */
+    visibility: hidden; /* MathJax লোড না হওয়া পর্যন্ত পেজ লুকিয়ে রাখবে */
   }
   .container { max-width: 850px; margin: auto; }
-  .solve-btn { 
-    background: #10ac84; 
-    color: white; 
-    border: none; 
-    padding: 10px 25px; 
-    border-radius: 30px; 
-    cursor: pointer; 
-    font-weight: 600;
-    font-family: 'Hind Siliguri', sans-serif;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  .solve-btn:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  .solve-btn.active {
-    background: #ff7675; /* বাটন এক্টিভ হলে এই রঙ হবে */
-  }
+  
   .header { 
     text-align: center; 
     background: #ffffff; 
@@ -92,10 +72,20 @@
     cursor: pointer; 
     font-weight: 600;
     font-family: 'Hind Siliguri', sans-serif;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    outline: none;
   }
 
-  .solve-btn:hover { background: #089772; transform: translateY(-2px); }
+  .solve-btn:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    background: #0d8d6d;
+  }
+
+  .solve-btn.active {
+    background: #ff7675; /* সলিউশন ওপেন থাকলে লালচে রঙ হবে */
+  }
 
   .solve-content { 
     display: none; 
@@ -116,7 +106,7 @@
 <div class="container">
   <div class="header">
     <h2>Syed Nazrul Islam College</h2>
-    <p style="color: #636e72;">Chemistry Solution Room | Exam Preparatory</p>
+    <p style="color: #636e72;">Chemistry Solution Room | Exam Preparatory 2026</p>
   </div>
 
   <!-- প্রশ্ন ০১ -->
@@ -129,7 +119,8 @@
       <div>ঘ) \( \frac{16}{17} \)</div>
     </div>
     
-   <button class="solve-btn" onclick="toggleSolve('s1', this)">Show Solution</button>
+    <!-- বাটন আপডেট: this এবং নতুন টেক্সট -->
+    <button class="solve-btn" onclick="toggleSolve('s1', this)">Show Solution</button>
     
     <div id="s1" class="solve-content">
       <strong>ব্যাখ্যা:</strong><br>
@@ -143,17 +134,17 @@
 </div>
 
 <script>
- function toggleSolve(id, btn) {
+  function toggleSolve(id, btn) {
     const content = document.getElementById(id);
     
     if (content.style.display === "block") {
       content.style.display = "none";
-      btn.innerText = "Show Solution";
-      btn.classList.remove("active");
+      btn.innerText = "Show Solution"; // বাটন টেক্সট পরিবর্তন
+      btn.classList.remove("active");  // রঙ পরিবর্তন
     } else {
       content.style.display = "block";
-      btn.innerText = "Hide Solution";
-      btn.classList.add("active");
+      btn.innerText = "Hide Solution"; // বাটন টেক্সট পরিবর্তন
+      btn.classList.add("active");     // রঙ পরিবর্তন
     }
   }
 </script>
