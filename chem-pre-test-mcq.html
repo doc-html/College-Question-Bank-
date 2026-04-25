@@ -2,39 +2,126 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Fonts থেকে সুন্দর বাংলা ফন্ট যুক্ত করা -->
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- MathJax Configuration: লোড হওয়ার সময় টেক্সট লুকিয়ে রাখবে -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    options: {
+      renderActions: {
+        addMenu: [],
+        checkReady: [10, function (doc) {
+          document.body.style.visibility = 'visible';
+        }, '']
+      }
+    }
+  };
+</script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js"></script>
+
 <style>
-  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
-  .container { max-width: 800px; margin: auto; }
-  .header { text-align: center; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 25px; border-top: 5px solid #007bff; }
-  .uddipok { background: #fff; border: 1px solid #d1e7ff; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; }
-  .mcq-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-  .solve-btn { background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: 0.3s; }
-  .solve-btn:hover { background: #218838; }
-  .solve-content { display: none; background: #f8fff9; border: 1px dashed #28a745; padding: 15px; border-radius: 10px; margin-top: 15px; color: #155724; }
-  .ans-tag { display: inline-block; background: #e7f3ff; color: #007bff; padding: 2px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
+  body { 
+    font-family: 'Hind Siliguri', sans-serif; 
+    background-color: #f0f4f8; 
+    margin: 0; 
+    padding: 20px; 
+    visibility: hidden; /* MathJax লোড না হওয়া পর্যন্ত পেজ লুকানো থাকবে */
+  }
+  .container { max-width: 850px; margin: auto; }
+  .solve-btn { 
+    background: #10ac84; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    font-weight: 600;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .solve-btn:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .solve-btn.active {
+    background: #ff7675; /* বাটন এক্টিভ হলে এই রঙ হবে */
+  }
+  .header { 
+    text-align: center; 
+    background: #ffffff; 
+    padding: 25px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+    margin-bottom: 30px; 
+    border-bottom: 5px solid #007bff;
+  }
+  
+  .header h2 { color: #1a2a6c; margin: 0; font-size: 28px; }
+
+  .mcq-card { 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 18px; 
+    margin-bottom: 25px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid #e1e8ed;
+  }
+
+  .question-text { font-size: 20px; font-weight: 700; color: #2d3436; margin-bottom: 15px; }
+
+  .options { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    margin: 20px 0; 
+    font-size: 18px;
+  }
+
+  .solve-btn { 
+    background: #10ac84; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    font-weight: 600;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: 0.3s;
+  }
+
+  .solve-btn:hover { background: #089772; transform: translateY(-2px); }
+
+  .solve-content { 
+    display: none; 
+    background: #f1f9f6; 
+    border-left: 5px solid #10ac84; 
+    padding: 20px; 
+    border-radius: 12px; 
+    margin-top: 20px; 
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .correct-ans { color: #0984e3; font-weight: 700; margin-top: 10px; display: block; }
 </style>
 </head>
 <body>
 
 <div class="container">
   <div class="header">
-    <h2 id="college-title">Syed Nazrul Islam College</h2>
-    <p>Chemistry | MCQ Solution Room</p>
+    <h2>Syed Nazrul Islam College</h2>
+    <p style="color: #636e72;">Chemistry Solution Room | Exam Preparatory</p>
   </div>
 
-  <div class="uddipok">
-    উদ্দীপকটি লক্ষ্য করো এবং ১ নং প্রশ্নের উত্তর দাও:<br>
-    \(w \text{ gm } H_2\) (পাত্র ১) \(\quad\) vs \(\quad\) \(w \text{ gm } CH_4\) (পাত্র ২) <br>
-    তাপমাত্রা: \(25^\circ C\)
-  </div>
-
-  <!-- প্রশ্ন ১ -->
+  <!-- প্রশ্ন ০১ -->
   <div class="mcq-card">
-    <div class="ans-tag">প্রশ্ন - ০১</div>
-    <p><strong>১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</strong></p>
+    <div class="question-text">১. উদ্দীপকের $H_2$ গ্যাসের মোল ভগ্নাংশ কত হবে?</div>
     <div class="options">
       <div>ক) \( \frac{1}{2} \)</div>
       <div>খ) \( \frac{8}{9} \)</div>
@@ -42,46 +129,31 @@
       <div>ঘ) \( \frac{16}{17} \)</div>
     </div>
     
-    <button class="solve-btn" onclick="toggleSolve('solve1')">Solve / Hide</button>
+   <button class="solve-btn" onclick="toggleSolve('s1', this)">Show Solution</button>
     
-    <div id="solve1" class="solve-content">
+    <div id="s1" class="solve-content">
       <strong>ব্যাখ্যা:</strong><br>
+      দেওয়া আছে, ভর = $w$<br>
       মোল সংখ্যা, \( n_{H_2} = \frac{w}{2} \) এবং \( n_{CH_4} = \frac{w}{16} \)<br>
-      মোল ভগ্নাংশ \( X_{H_2} = \frac{w/2}{w/2 + w/16} = \frac{8}{9} \)<br>
-      <span style="color: blue;">সঠিক উত্তর: খ</span>
-    </div>
-  </div>
-
-  <!-- প্রশ্ন ২ (উদাহরণ হিসেবে আরেকটি) -->
-  <div class="mcq-card">
-    <div class="ans-tag">প্রশ্ন - ০২</div>
-    <p><strong>২. প্রমাণ অবস্থায় ১ লিটার গ্যাসে কতটি অণু থাকে?</strong></p>
-    <div class="options">
-      <div>ক) \( 6.022 \times 10^{23} \)</div>
-      <div>খ) \( 2.69 \times 10^{22} \)</div>
-      <div>গ) \( 22.4 \times 10^{23} \)</div>
-      <div>ঘ) \( 1.6 \times 10^{-19} \)</div>
-    </div>
-    
-    <button class="solve-btn" onclick="toggleSolve('solve2')">Solve / Hide</button>
-    
-    <div id="solve2" class="solve-content">
-      <strong>ব্যাখ্যা:</strong><br>
-      ২২.৪ লিটারে থাকে \( 6.022 \times 10^{23} \) টি অণু।<br>
-      ১ লিটারে থাকে \( \frac{6.022 \times 10^{23}}{22.4} \approx 2.69 \times 10^{22} \) টি অণু।<br>
-      <span style="color: blue;">সঠিক উত্তর: খ</span>
+      মোল ভগ্নাংশ \( X_{H_2} = \frac{\frac{w}{2}}{\frac{w}{2} + \frac{w}{16}} = \frac{8}{9} \)<br>
+      <span class="correct-ans">সঠিক উত্তর: খ</span>
     </div>
   </div>
 
 </div>
 
 <script>
-  function toggleSolve(id) {
-    var content = document.getElementById(id);
+ function toggleSolve(id, btn) {
+    const content = document.getElementById(id);
+    
     if (content.style.display === "block") {
       content.style.display = "none";
+      btn.innerText = "Show Solution";
+      btn.classList.remove("active");
     } else {
       content.style.display = "block";
+      btn.innerText = "Hide Solution";
+      btn.classList.add("active");
     }
   }
 </script>
